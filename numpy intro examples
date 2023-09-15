@@ -1,0 +1,777 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/opark03/Notebooks/blob/main/numpy%20intro%20examples\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Installing & Importing Packages"
+      ],
+      "metadata": {
+        "id": "bP9jDhP4ya3x"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "`numpy` is the first Python package we will be using. External packages not built into Python usually have to be (1) installed and (2) imported.\n",
+        "\n",
+        "### Installing\n",
+        "\n",
+        "To install any package into your current Google Colab session, use the `!pip` command like this:\n",
+        "```\n",
+        "!pip install numpy\n",
+        "```\n",
+        "However, `numpy` is such a common package it comes pre-installed here.\n",
+        "\n",
+        "### Importing\n",
+        "Once a package is installed into your system, it must be imported into any Python code using the `import` command:\n",
+        "```\n",
+        "import numpy\n",
+        "```\n",
+        "### Import Aliases\n",
+        "Python also allows import statements to declare an alias for referencing the package. It is a common practice among `numpy` users to import it as `np` like this:\n",
+        "```\n",
+        "import numpy as np\n",
+        "```"
+      ],
+      "metadata": {
+        "id": "7SPm4s7TDoGF"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Basic NumPy Array Functionality"
+      ],
+      "metadata": {
+        "id": "cZ09VMUnE0hn"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np"
+      ],
+      "metadata": {
+        "id": "pTtxnCPmDmzx"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "z = np.ones(10)\n",
+        "z"
+      ],
+      "metadata": {
+        "id": "oOCGJiPnxO7L",
+        "outputId": "19a7c9e8-d914-478a-9c92-595cc7ad8257",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 2
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "z.shape"
+      ],
+      "metadata": {
+        "id": "QCvVComPxf_7",
+        "outputId": "f8236a85-95e8-4bbf-83f3-bf4153bf8458",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(10,)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "z = np.linspace(2, 10, 5)         # go from 2 to 10, with 5 elements\n",
+        "z"
+      ],
+      "metadata": {
+        "id": "K9o0_jOcxmeX",
+        "outputId": "b6ce4486-67bf-452a-eb69-80f72956e6d6",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 2.,  4.,  6.,  8., 10.])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a_list = [1,2,3,4,5,6,7]\n",
+        "z = np.array([a_list])\n",
+        "z"
+      ],
+      "metadata": {
+        "id": "DgYzyO8Vxwez",
+        "outputId": "0c01404c-e1b2-45ec-db7f-87dc059268d0",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[1, 2, 3, 4, 5, 6, 7]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "type(z)"
+      ],
+      "metadata": {
+        "id": "bCLMABEhx5Ix",
+        "outputId": "b221b300-4681-4d79-fd27-776ae0fa4b60",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "numpy.ndarray"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "use type and it states that it is a numoy nd array"
+      ],
+      "metadata": {
+        "id": "fbFx4dcgRvz8"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "b_list = [[9,8,7,6,5,4,3],[1,2,3,4,5,6,7]]      # 2-dimensional array\n",
+        "z = np.array([b_list])\n",
+        "z"
+      ],
+      "metadata": {
+        "id": "yHljhRBex9Lg",
+        "outputId": "7448e460-ea0b-4aae-a22a-e5f8249c1070",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[[9, 8, 7, 6, 5, 4, 3],\n",
+              "        [1, 2, 3, 4, 5, 6, 7]]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "z.shape       # get the shape of the array\n",
+        "z.ndim        # get the dimensions of the array"
+      ],
+      "metadata": {
+        "id": "GXxKSvTVyD8M",
+        "outputId": "d3a31214-3bf1-4226-fba5-45a3ad18548b",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Sort an array\n",
+        "\n",
+        "x = np.array([2, 1, 4, 3, 5])\n",
+        "np.sort(x)"
+      ],
+      "metadata": {
+        "id": "z1GXyQZYw4QQ",
+        "outputId": "c12cf58a-2e32-47c5-9744-0ec35a922250",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 2, 3, 4, 5])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 9
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "z = np.array([1, 2, 3, 4, 5])"
+      ],
+      "metadata": {
+        "id": "eDGHQKzcvpoF"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Filter the array\n",
+        "z < 3"
+      ],
+      "metadata": {
+        "id": "50vOX5Rwvypx",
+        "outputId": "37e21a11-8300-4d0c-f4f3-810ce76c95e3",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ True,  True, False, False, False])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 11
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "z > 3"
+      ],
+      "metadata": {
+        "id": "25C6DxaOv1cA",
+        "outputId": "ee46ed05-6683-4e0a-a9ae-ac41c9d2f329",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([False, False, False,  True,  True])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 12
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Apply a mask to an array\n",
+        "z[z > 3]"
+      ],
+      "metadata": {
+        "id": "nWM_38szv2h5",
+        "outputId": "1bba0e91-b554-4561-b6c3-e951a8cbdbd8",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([4, 5])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 13
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Adding and combining arrays\n",
+        "\n",
+        "a_array = np.array([1,2,3,4,5])\n",
+        "b_array = np.array([6,7,8,9,10])"
+      ],
+      "metadata": {
+        "id": "tbJWXO8JwNdI"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a_array + b_array"
+      ],
+      "metadata": {
+        "id": "ksSgOgz6wTlr",
+        "outputId": "a74a7e4c-5cb7-4a79-b0ac-26dbe425bf80",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 7,  9, 11, 13, 15])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 15
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a_array + 30"
+      ],
+      "metadata": {
+        "id": "nH0-Yd8pwX5N",
+        "outputId": "f451f765-d60e-45c3-f42a-c3cba5f35680",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([31, 32, 33, 34, 35])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 16
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a_array * b_array"
+      ],
+      "metadata": {
+        "id": "U_PSotFmwZlY",
+        "outputId": "8821c052-a02e-423e-c754-dc9c86e7c4d5",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 6, 14, 24, 36, 50])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 17
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a_array * 10"
+      ],
+      "metadata": {
+        "id": "Son_IPI4wcn8",
+        "outputId": "b0ea3109-b8d6-45e3-cc8c-9239371a4ca7",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([10, 20, 30, 40, 50])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 18
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "z.dtype"
+      ],
+      "metadata": {
+        "id": "2m4AGw0MR_-n",
+        "outputId": "c9169230-cb99-4fda-a28b-b5d8401d544c",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "dtype('int64')"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 21
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "z.ndim"
+      ],
+      "metadata": {
+        "id": "bm_U9HaeSOgH",
+        "outputId": "8ba19476-b467-4852-fe5b-3b5cee114e5c",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 22
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Images are Numerical Data"
+      ],
+      "metadata": {
+        "id": "WnaTMQaeyRkq"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "f5r-yejvtvUw",
+        "outputId": "64eaac5c-2d17-48e8-c107-b74c17f567a4",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Requirement already satisfied: scikit-image in /usr/local/lib/python3.10/dist-packages (0.19.3)\n",
+            "Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (3.7.1)\n",
+            "Requirement already satisfied: numpy>=1.17.0 in /usr/local/lib/python3.10/dist-packages (from scikit-image) (1.23.5)\n",
+            "Requirement already satisfied: scipy>=1.4.1 in /usr/local/lib/python3.10/dist-packages (from scikit-image) (1.11.2)\n",
+            "Requirement already satisfied: networkx>=2.2 in /usr/local/lib/python3.10/dist-packages (from scikit-image) (3.1)\n",
+            "Requirement already satisfied: pillow!=7.1.0,!=7.1.1,!=8.3.0,>=6.1.0 in /usr/local/lib/python3.10/dist-packages (from scikit-image) (9.4.0)\n",
+            "Requirement already satisfied: imageio>=2.4.1 in /usr/local/lib/python3.10/dist-packages (from scikit-image) (2.31.3)\n",
+            "Requirement already satisfied: tifffile>=2019.7.26 in /usr/local/lib/python3.10/dist-packages (from scikit-image) (2023.8.30)\n",
+            "Requirement already satisfied: PyWavelets>=1.1.1 in /usr/local/lib/python3.10/dist-packages (from scikit-image) (1.4.1)\n",
+            "Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.10/dist-packages (from scikit-image) (23.1)\n",
+            "Requirement already satisfied: contourpy>=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (1.1.0)\n",
+            "Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (0.11.0)\n",
+            "Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (4.42.1)\n",
+            "Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (1.4.5)\n",
+            "Requirement already satisfied: pyparsing>=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (3.1.1)\n",
+            "Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (2.8.2)\n",
+            "Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil>=2.7->matplotlib) (1.16.0)\n"
+          ]
+        }
+      ],
+      "source": [
+        "!pip install scikit-image matplotlib"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "from skimage import io\n",
+        "\n",
+        "photo = io.imread('hotel.jpg')\n",
+        "type(photo)"
+      ],
+      "metadata": {
+        "id": "MekyEI1RueMK"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "photo.shape"
+      ],
+      "metadata": {
+        "id": "aAotRovJuf4U"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "plt.imshow(photo)"
+      ],
+      "metadata": {
+        "id": "Svpg3eHxuhny"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.imshow(photo[::-1])"
+      ],
+      "metadata": {
+        "id": "2z9DGVk-uxyx"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.imshow(photo[:, ::-1])"
+      ],
+      "metadata": {
+        "id": "t7NgloZMu3D5"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.imshow(photo[200:400, 300:500])"
+      ],
+      "metadata": {
+        "id": "tp-2V5nIu89y"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.imshow(photo[::2, ::2])"
+      ],
+      "metadata": {
+        "id": "d9KXsXLPvQtG"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Get the sin of all three channels of each pixel value\n",
+        "\n",
+        "photo_sin = np.sin(photo)\n",
+        "photo_sin"
+      ],
+      "metadata": {
+        "id": "l8hgkn2tvWyK"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Other built-in statistical functions\n",
+        "\n",
+        "print(np.sum(photo))\n",
+        "print(np.prod(photo))\n",
+        "print(np.mean(photo))\n",
+        "print(np.std(photo))\n",
+        "print(np.var(photo))\n",
+        "print(np.min(photo))\n",
+        "print(np.max(photo))"
+      ],
+      "metadata": {
+        "id": "a99o5Sy-vbb1"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Search every value in the array, and when a value is above 100, replace it with 255.\n",
+        "# Where it isn't above 100, replace with 0.\n",
+        "\n",
+        "photo_masked = np.where(photo > 100, 255, 0)"
+      ],
+      "metadata": {
+        "id": "d1cxpr87v9d-"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.imshow(photo_masked)"
+      ],
+      "metadata": {
+        "id": "ULbMPTJswEtM"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Both filter the values of the array and transpose its axes.\n",
+        "# Switches rows and columns.\n",
+        "\n",
+        "plt.imshow(photo[:,:,0].T)"
+      ],
+      "metadata": {
+        "id": "irDxAP4wwvye"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
